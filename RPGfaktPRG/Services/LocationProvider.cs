@@ -9,45 +9,70 @@ namespace RPGfaktPRG.Services
 {
     public class LocationProvider : ILocationProvider
     {
-        private Dictionary<int, ILocation> _locations;
+        private Dictionary<Room, ILocation> _locations;
         private List<Connection> _map;
 
         public LocationProvider()
         {
-            _locations = new Dictionary<int, ILocation>();
+            _locations = new Dictionary<Room, ILocation>();
             _map = new List<Connection>();
             
-            _locations.Add(0, new Location {Title = "Start", Description = "This is where our story starts."}); // Game starts
-            _locations.Add(1, new Location { Title = "Prison", Description = "Probouzíš se v jakémsi vězení a nic si nepamatuješ. Po chvilce slyšíš rozhovor mezi dvěma strážemi z něhož vyplývá, že jsi byl unešen hitmany, kteří se tě chystají kvůli tvým neuvěřitelným programátorským schopnostem prodat do otroctví. Musíš se za každou cenu dostat ven." });
-            _locations.Add(2, new Location { Title = "Yard", Description = "Dostal jsi se na nádvoří a vidíš že okolo celého areálu je ostnatý plot. Pokusit se ho přelézt by tě mohlo stát život." });
-            _locations.Add(4, new Location { Title = "Fence", Description = "" }); //In prison
-            _locations.Add(5, new Location { Title = "Gate", Description = "Opatrně jsi se proplížil a nikdo tě nespatřil. Vedle brány vidíš terminál. Na otevření brány budeš potřebovat kartu." });
-            _locations.Add(6, new Location { Title = "Tower", Description = "Pomalu se plížíš po schodech věže, když najednou jeden ze schodů vydá zvláštní zvuk po tom, co na něj šlápneš. Zezhora slyšíš jak se zvedá strážný a jde ti naproti v domění, že jsi jiný strážný, co ho jde vystřídat. Co uděláš?" });
-            _locations.Add(7, new Location {Title = "Hall", Description = "" });
-            _locations.Add(8, new Location {Title = "Zachody", Description = "" });
-            _locations.Add(9, new Location { Title = "CameraRoom", Description = "" });
-            _locations.Add(10, new Location { Title = "Game Over", Description = "All worldly things will one day perish. You just did." }); // Game Over
-            _map.Add(new Connection(1, 2, "Prison"));
-            _map.Add(new Connection(2, 7, "JDI DO HALY"));
-            _map.Add(new Connection(7, 2, "Můžeš se vrátit do cely"));
-            _map.Add(new Connection(2, 3, "Utéct na YARD"));
-            _map.Add(new Connection(3, 2, "Vrátit se zpět"));
-            _map.Add(new Connection(3, 6, "Jdi ke věži"));
-            _map.Add(new Connection(3, 5, "Jdi k bráně"));
-            _map.Add(new Connection(7, 8, "Vyzkoušej nový záchody"));
-            _map.Add(new Connection(7, 9, "Jdi do cameraRoom"));
-            _map.Add(new Connection(8, 7, "Zpět do Haly"));
-            _map.Add(new Connection(9, 7, "Zpět do Haly"));
-            _map.Add(new Connection(9, 7, "Zpět do Haly"));
+            _locations.Add(Room.Start, new Location { // Game starts 
+                Title = "Start", 
+                Description = "Vítáme tě u naší hry, která bude o útěku z vězení. Už to nebudeme zdržovat, běž na to!" });
+            _locations.Add(Room.Prison, new Location { 
+                Title = "Prison", 
+                Description = "Probouzíš se v jakémsi vězení a nic si nepamatuješ. Po chvilce slyšíš rozhovor mezi dvěma strážemi z něhož vyplývá, že jsi byl unešen hitmany, kteří se tě chystají kvůli tvým neuvěřitelným programátorským schopnostem prodat do otroctví. Musíš se za každou cenu dostat ven." });
+            _locations.Add(Room.Fence, new Location { 
+                Title = "Fence", 
+                Description = "Přibližuješ se k plotu a zjištuješ, že přelézt ho nebude uplně bezpečné." }); 
+            _locations.Add(Room.Hall, new Location {
+                Title = "Hall", 
+                Description = "Vstupuješ do haly, která je k tvému překvapení naprosto vylidněná. Stráže musí být někde poblíž." });
+            _locations.Add(Room.Zachody, new Location {
+                Title = "Zachody", 
+                Description = "Vstupuješ na záchody strážných. Už se připravuješ vykonat svojí potřebu, když najednou si všimneš krabičky v rohu místnosti." });
+            _locations.Add(Room.CameraRoom, new Location { 
+                Title = "CameraRoom", 
+                Description = "Vstupuješ do místnosti s kamerami. Na stole vidíš jakousi kartu a mobil. Když se podíváš na hodiny na počítači, vidíš, že je čas oběda." });
+            _locations.Add(Room.Gate, new Location { 
+                Title = "Gate", 
+                Description = "Opatrně jsi se proplížil a nikdo tě nespatřil. Vedle brány vidíš terminál. Na otevření brány budeš potřebovat kartu." });
+            _locations.Add(Room.Tower, new Location { 
+                Title = "Tower", 
+                Description = "Pomalu se plížíš po schodech věže. V polovině cesty špatně šlápneš a uděláš tak hlasitý zvuk. Zezhora slyšíš, jak se zvedá strážný a jde ti naproti v domnění, že jsi jiný strážný, co ho jde vystřídat. Co uděláš?" });
+            _locations.Add(Room.Yard, new Location { 
+                Title = "Yard", 
+                Description = "Dostal jsi se na nádvoří. Vidíš, že okolo celého areálu je ostnatý plot." });
+            _locations.Add(Room.GameOver, new Location { 
+                Title = "Game Over", 
+                Description = "O uprchlých vězních z Alcatrazu se neví nic. Ani to, jestli jejich útěk byl úspěšný, nebo ne. U tebe je to však nadmíru jasné. "
+            }); // Game Over
 
+
+            _map.Add(new Connection(Room.Start, Room.Prison, "Začít"));
+            _map.Add(new Connection(Room.Prison, Room.Hall, "Jít do haly"));
+            _map.Add(new Connection(Room.Hall, Room.Prison, "Vrátit se do cely"));
+            _map.Add(new Connection(Room.Prison, Room.Yard, "Utéct oknem na nádvoří"));
+            _map.Add(new Connection(Room.Yard, Room.Prison, "Vrátit se do cely"));
+            _map.Add(new Connection(Room.Yard, Room.Tower, "Proplížit se ke strážní věži"));
+            _map.Add(new Connection(Room.Yard, Room.Gate, "Proplížit se k bráně"));
+            _map.Add(new Connection(Room.Hall, Room.Zachody, "Vyzkoušet zbrusu nový záchody"));
+            _map.Add(new Connection(Room.Hall, Room.CameraRoom, "Jít do kamerové místnosti"));
+            _map.Add(new Connection(Room.Zachody, Room.Hall, "Jít zpět do haly"));
+            _map.Add(new Connection(Room.CameraRoom, Room.Hall, "Jít zpět do haly"));
+            _map.Add(new Connection(Room.Gate, Room.Hall, "Jít do vězeňské budovy"));
+            _map.Add(new Connection(Room.Gate, Room.Prison, "Vrátit se do svojí cely"));
         }
 
-        public bool ExistsLocation(int id)
+
+
+    public bool ExistsLocation(Room id)
         {
             return _locations.ContainsKey(id);
         }
 
-        public List<Connection> GetConnectionsFrom(int id)
+        public List<Connection> GetConnectionsFrom(Room id)
         {
             if (ExistsLocation(id))
             {
@@ -56,12 +81,12 @@ namespace RPGfaktPRG.Services
             throw new InvalidLocation();
         }
 
-        public List<Connection> GetConnectionsTo(int id)
+        public List<Connection> GetConnectionsTo(Room id)
         {
             throw new NotImplementedException();
         }
 
-        public Location GetLocation(int id)
+        public Location GetLocation(Room id)
         {
             if (ExistsLocation(id))
             {
@@ -70,7 +95,7 @@ namespace RPGfaktPRG.Services
             throw new InvalidLocation();
         }
 
-        public bool IsNavigationLegitimate(int from, int to, GameState state)
+        public bool IsNavigationLegitimate(Room from, Room to, GameState state)
         {
             throw new NotImplementedException();
         }

@@ -20,7 +20,7 @@ namespace RPGfaktPRG.Pages
 
         public Location Location { get; set; }
         public List<Connection> Targets { get; set; }
-        public void OnGet(int id)
+        public void OnGet(Room id)
         {
             _gs.FetchData();
             

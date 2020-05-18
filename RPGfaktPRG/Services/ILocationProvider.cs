@@ -8,10 +8,10 @@ namespace RPGfaktPRG.Services
 {
     public interface ILocationProvider
     {
-        bool ExistsLocation(int id);
-        Location GetLocation(int id);
-        List<Connection> GetConnectionsFrom(int id);
-        List<Connection> GetConnectionsTo(int id);
-        bool IsNavigationLegitimate(int from, int to, GameState state);
+        bool ExistsLocation(Room id);
+        Location GetLocation(Room id);
+        List<Connection> GetConnectionsFrom(Room id);
+        List<Connection> GetConnectionsTo(Room id);
+        bool IsNavigationLegitimate(Room from, Room to, GameState state);
     }
 }

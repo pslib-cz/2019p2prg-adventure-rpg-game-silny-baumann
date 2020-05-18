@@ -14,7 +14,7 @@ namespace RPGfaktPRG.Model
         /// <param name="to">Id of location we want to enter.</param>
         /// <param name="description">Room description.</param>
         /// <param name="condition">Additional condition required for succesfull movement.</param>
-        public Connection(int from, int to, string description)
+        public Connection(Room from, Room to, string description)
         {
             From = from;
             To = to;
@@ -22,8 +22,8 @@ namespace RPGfaktPRG.Model
         }
 
 
-        public int From { get; set; }
-        public int To { get; set; }
+        public Room From { get; set; }
+        public Room To { get; set; }
         public string Description { get; set; }
     }
 }

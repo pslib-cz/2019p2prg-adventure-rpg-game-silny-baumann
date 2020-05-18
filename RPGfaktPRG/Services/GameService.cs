@@ -10,7 +10,7 @@ namespace RPGfaktPRG.Services
         private readonly ISessionStorage<GameState> _ss;
         private readonly ILocationProvider _lp;
         private const string KEY = "AMAZINGADVENTURE";
-        private const int START_ROOM = 0;
+        private const Room START_ROOM = Room.Start;
         public GameState State { get; private set; }
         public Location Location { get { return _lp.GetLocation(State.Location); } }
         public List<Connection> Targets { get { return _lp.GetConnectionsFrom(State.Location); } }

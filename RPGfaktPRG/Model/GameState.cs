@@ -7,7 +7,7 @@ namespace RPGfaktPRG.Model
 {
     public class GameState
     {
-        public int Location { get; set;}
+        public Room Location { get; set;}
         public int Health { get; set;}
     }
 }
