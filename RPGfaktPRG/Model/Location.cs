@@ -9,5 +9,6 @@ namespace RPGfaktPRG.Model
     {
         public string Description { get; set; }
         public string Title { get; set; }
+        public int ID { get; set; }
     }
 }

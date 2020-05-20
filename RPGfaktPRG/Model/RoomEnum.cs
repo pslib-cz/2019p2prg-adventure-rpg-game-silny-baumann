@@ -16,12 +16,15 @@ namespace RPGfaktPRG.Model
         Fence,
         Yard,
         Gate,
-        Zachody,
+        Toilets,
         Forest,
-        Kplotu,
-        Jidelna,
-
-
+        ToFence,
+        DiningRoom,
+        ToiletsBox,
+        ToiletsBoxBlow,
+        BehindFence,
+        BehindFenceSuccess,
+        BehindFenceFailure,
         /*
          Vězeňská místnost - Probouzíš se v jakémsi vězení a nic si nepamatuješ. Po chvilce slyšíš rozhovor mezi dvěma strážemi z něhož vyplývá, že jsi byl unešen hitmany, kteří se tě chystají kvůli tvým neuvěřitelným programátorským schopnostem prodat do otroctví. Musíš se za každou cenu dostat ven.
 Dvůr - Dostal jsi se na nádvoří a vidíš že okolo celého areálu je ostatný plot. Pokusit se ho přelézt by tě mohlo stát život.

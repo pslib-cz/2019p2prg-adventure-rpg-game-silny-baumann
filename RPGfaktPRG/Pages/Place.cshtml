@@ -11,4 +11,23 @@
     {
         <a class="btn btn-secondary" asp-page="Place" asp-route-id="@target.To">@target.Description</a>
     }
+    @{ var idk2 = Model.Location.ID;}
+
+    @for (int i = 0; i < 100; i++)
+    {
+        int randomValueBetween0And99 = Model.RandomGen.Next(100);
+        if (randomValueBetween0And99 < @Model.clickPercentage)
+        {
+
+
+        }
+        else
+        {
+
+        }
+    }
+    @if (idk2 == 1)
+    {
+    @Model.idk
+    }
 </div>

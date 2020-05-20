@@ -19,7 +19,11 @@ namespace RPGfaktPRG.Pages
         }
 
         public Location Location { get; set; }
+        public int clickPercentage = 70;
+        public string idk { get; set; }
+        
         public List<Connection> Targets { get; set; }
+        public  Random RandomGen = new Random();
         public void OnGet(Room id)
         {
             _gs.FetchData();
@@ -29,6 +33,8 @@ namespace RPGfaktPRG.Pages
             _gs.Store();
             Location = _gs.Location;
             Targets = _gs.Targets;
+            idk = "dwadaw";
+            
         }
     }
 }
