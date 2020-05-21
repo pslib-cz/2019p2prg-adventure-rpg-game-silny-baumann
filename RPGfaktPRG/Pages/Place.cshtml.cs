@@ -23,6 +23,7 @@ namespace RPGfaktPRG.Pages
         public GameState State { get; set; }
         public List<Connection> Targets { get; set; }
         public  Random RandomGen = new Random();
+        public Room Fence { get; set; }
         public void OnGet(Room id)
         {
             _gs.FetchData();

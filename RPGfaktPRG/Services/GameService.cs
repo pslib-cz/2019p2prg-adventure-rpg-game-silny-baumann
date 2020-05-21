@@ -41,18 +41,6 @@ namespace RPGfaktPRG.Services
         public void Action(Room Room)
         {
             State.Health = State.Health + _lp.GetLocation(Room).Health;
-
-            switch (Room)
-            {
-
-                case Room.GameOver:
-                    State.Health = 0;
-                    break;
-                case Room.Prison:
-                    break;
-
-            }
-
         }
     }
 }

@@ -9,14 +9,15 @@
 <div class="m-1">
     @foreach (var target in Model.Targets)
     {
+        @target.Id
         if (Model.State.Health <= 0)
         {
             target.To = RPGfaktPRG.Model.Room.GameOver;
         }
         <a class="btn btn-secondary" asp-page="Place" asp-route-id="@target.To">@target.Description</a>
-        if (Model.Location.Title == "Fence")
+        if (RPGfaktPRG.Model.Room. = "Fence")
         {
-            <a class="btn btn-secondary" asp-page="Place" onclick="" asp-route-id="@target.To">@target.Description</a>
+            <a class="btn btn-secondary" asp-page="Place"> </a>
             for (int i = 0; i < 100; i++)
             {
                 int randomValueBetween0And99 = Model.RandomGen.Next(100);

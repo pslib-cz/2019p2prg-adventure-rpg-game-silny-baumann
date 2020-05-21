@@ -18,13 +18,13 @@ namespace RPGfaktPRG.Services
             _map = new List<Connection>();
 
             _locations.Add(Room.Start, new Location
-            { // Game starts 
+            { // Game starts
                 ID = 0,
                 Title = "Start",
                 Description = "Vítáme tě u naší hry, která bude o útěku z vězení. Už to nebudeme zdržovat, běž na to!"
-                
 
-            }) ;
+
+            });
             _locations.Add(Room.Prison, new Location
             {
                 ID = 1,
@@ -97,37 +97,95 @@ namespace RPGfaktPRG.Services
                 Title = "Yard",
                 Description = "Dostal jsi se na nádvoří. Vidíš, že okolo celého areálu je ostnatý plot."
             });
-            
             _locations.Add(Room.GameOver, new Location
             {
                 ID = 13,
                 Title = "Game Over",
-                Description = "O uprchlých vězních z Alcatrazu se neví nic. Ani to, jestli jejich útěk byl úspěšný, nebo ne. U tebe je to však nadmíru jasné. ",
-                Health = -10
+                Description = "O uprchlých vězních z Alcatrazu se neví nic. Ani to, jestli jejich útěk byl úspěšný, nebo ne. U tebe je to však nadmíru jasné.",
             }); // Game Over
+            _locations.Add(Room.DiningRoom, new Location
+            {
+                ID = 14,
+                Title = "DiningRoom",
+                Description = "Pomalu otevíráš dveře jídelny. Po vykouknutí zpoza dveří vidíš, kde byly celou dobu všechny stráže. Než se naděješ, všichni se po tobě sbíhají..."
+            });
+            _locations.Add(Room.Car, new Location
+            {
+                ID = 15,
+                Title = "Car",
+                Description = "Pomalu jsi se dobelhal k autu. Všímáš si otevřených dveří ale když se podíváš dovnitř, klíče nevidíš."
+            });
+            _locations.Add(Room.Road, new Location
+            {
+                ID = 16,
+                Title = "Road",
+                Description = "Chvíli jdeš po cestě, když najednou okolo projíždí vězeňské auto. Nejspíš si všimli, že jim chybíš. Auto se zastavuje. Co uděláš?"
+            });
+            _locations.Add(Room.DoNothing, new Location
+            {
+                ID = 17,
+                Title = "DoNothing",
+                Description = "Poklidně jdeš dál po silnici s vírou, že tě nerozpoznají. Ovšem se mýlíš a poslední co vidíš je to, jak strážník vytahuje svoje USPčko."
+            });
+            _locations.Add(Room.Run, new Location
+            {
+                ID = 18,
+                Title = "Run",
+                Description = "Rozhodneš se utíkat, ale je to k ničemu. Během několika sekund tě strážní dobíhají a sráží tě na zem..."
+            });
+            _locations.Add(Room.Surrender, new Location
+            {
+                ID = 19,
+                Title = "Surrender",
+                Description = "Rozhodneš se neriskovat svůj život a vzdát se. Stráže tě berou do zadní části auta. Stráže už se chystají tě odvézt, když najednou řidiči začne zvonit telefon. Nechává klíčky v zapalování a jde s telefonem ven. Druhý strážný si jde zatím zakouřit. Tohle by mohla být tvoje poslední šance na útěk. Co uděláš?"
+            });
+            _locations.Add(Room.DoNothingCar, new Location
+            {
+                ID = 20,
+                Title = "DoNothingCar",
+                Description = "Rozhodneš se nic neudělat. Po chvilce se oba strážní vracejí a odváží tě do věznice. Vážně jsi TAKHLE propásl svojí šanci?",
+                Health = -10
+            });
+            _locations.Add(Room.CarSteal, new Location
+            {
+                ID = 21,
+                Title = "CarSteal",
+                Description = "Přelézáš zezadu na místo řidiče a rychle startuješ auto. Strážníci si tě rychle všímají a běží k autu. Ty ale šlapeš na pedál a rychle odjíždíš. Zvládl jsi to!"
+            });
 
 
-            _map.Add(new Connection(Room.Start, Room.Prison, "Začít"));
-            _map.Add(new Connection(Room.Prison, Room.Hall, "Jít do haly"));
-            _map.Add(new Connection(Room.Hall, Room.Prison, "Vrátit se do cely"));
-            _map.Add(new Connection(Room.Prison, Room.Yard, "Utéct oknem na nádvoří"));
-            _map.Add(new Connection(Room.Yard, Room.Prison, "Vrátit se do cely"));
-            _map.Add(new Connection(Room.Yard, Room.Fence, "Jít k plotu"));
-            _map.Add(new Connection(Room.Fence, Room.BehindFence, "Přelézt plot"));
-            _map.Add(new Connection(Room.Yard, Room.Tower, "Proplížit se ke strážní věži"));
-            _map.Add(new Connection(Room.Yard, Room.Gate, "Proplížit se k bráně"));
-            _map.Add(new Connection(Room.Hall, Room.Toilets, "Vyzkoušet zbrusu nový záchody"));
-            _map.Add(new Connection(Room.Hall, Room.CameraRoom, "Jít do kamerové místnosti"));
-            _map.Add(new Connection(Room.Toilets, Room.Hall, "Jít zpět do haly"));
-            _map.Add(new Connection(Room.CameraRoom, Room.Hall, "Jít zpět do haly"));
-            _map.Add(new Connection(Room.Gate, Room.Hall, "Jít do vězeňské budovy"));
-            _map.Add(new Connection(Room.Gate, Room.Prison, "Vrátit se do svojí cely"));
-            _map.Add(new Connection(Room.Toilets, Room.ToiletsBox, "Jít ke krabičce"));
-            _map.Add(new Connection(Room.ToiletsBox, Room.ToiletsBoxBlow, "Vyhodit pojistky"));
-            _map.Add(new Connection(Room.ToiletsBox, Room.Hall, "Jít zpět do haly"));
-            _map.Add(new Connection(Room.ToiletsBoxBlow, Room.Prison, "Hrát znovu"));
-            _map.Add(new Connection(Room.Hall, Room.GameOver, "awdawd"));
-
+            _map.Add(new Connection(1, Room.Start, Room.Prison, "Začít"));
+            _map.Add(new Connection(2, Room.Prison, Room.Hall, "Jít do haly"));
+            _map.Add(new Connection(3, Room.Prison, Room.Yard, "Utéct oknem na nádvoří"));
+            _map.Add(new Connection(4, Room.Yard, Room.Prison, "Vrátit se do cely"));
+            _map.Add(new Connection(5, Room.Yard, Room.Fence, "Jít k plotu"));
+            _map.Add(new Connection(6, Room.Yard, Room.Tower, "Proplížit se ke strážní věži"));
+            _map.Add(new Connection(7, Room.Yard, Room.Gate, "Proplížit se k bráně"));
+            _map.Add(new Connection(8, Room.Hall, Room.Toilets, "Vyzkoušet zbrusu nový záchody"));
+            _map.Add(new Connection(9, Room.Hall, Room.CameraRoom, "Jít do kamerové místnosti"));
+            _map.Add(new Connection(10, Room.Hall, Room.Prison, "Vrátit se do cely"));
+            _map.Add(new Connection(11, Room.Toilets, Room.Hall, "Jít zpět do haly"));
+            _map.Add(new Connection(12, Room.CameraRoom, Room.Hall, "Jít zpět do haly"));
+            _map.Add(new Connection(13, Room.Gate, Room.Hall, "Jít do vězeňské budovy"));
+            _map.Add(new Connection(14, Room.Gate, Room.Prison, "Vrátit se do svojí cely"));
+            _map.Add(new Connection(15, Room.Toilets, Room.ToiletsBox, "Jít ke krabičce"));
+            _map.Add(new Connection(16, Room.ToiletsBox, Room.ToiletsBoxBlow, "Vyhodit pojistky"));
+            _map.Add(new Connection(17, Room.ToiletsBox, Room.Hall, "Jít zpět do haly"));
+            _map.Add(new Connection(18, Room.ToiletsBoxBlow, Room.Prison, "Hrát znovu"));
+            _map.Add(new Connection(19, Room.Hall, Room.GameOver, "awdawd"));
+            _map.Add(new Connection(20, Room.BehindFenceSuccess, Room.Car, "Jít k autu"));
+            _map.Add(new Connection(21, Room.BehindFenceSuccess, Room.Road, "Jít po silnici"));
+            _map.Add(new Connection(22, Room.Car, Room.BehindFenceSuccess, "Vrátit se k plotu"));
+            _map.Add(new Connection(23, Room.Road, Room.DoNothing, "Jít dál"));
+            _map.Add(new Connection(24, Room.Road, Room.Run, "Zkusit utéct"));
+            _map.Add(new Connection(25, Room.Run, Room.Prison, "Hrát znovu"));
+            _map.Add(new Connection(26, Room.DoNothing, Room.Prison, "Hrát znovu"));
+            _map.Add(new Connection(27, Room.Road, Room.Surrender, "Vzdát se"));
+            _map.Add(new Connection(28, Room.Surrender, Room.DoNothingCar, "Nic nedělat"));
+            _map.Add(new Connection(29, Room.Surrender, Room.CarSteal, "Pokusit se ukrást auto"));
+            _map.Add(new Connection(30, Room.CarSteal, Room.Prison, "Hrát znovu"));
+            _map.Add(new Connection(31, Room.Fence, Room.BehindFenceSuccess, "Jít k plotu"));
+            _map.Add(new Connection(32, Room.Fence, Room.BehindFenceFailure, "Jít k plotu"));
         }
 
 
