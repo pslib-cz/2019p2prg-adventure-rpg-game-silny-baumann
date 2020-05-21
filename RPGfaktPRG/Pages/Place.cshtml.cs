@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using RPGfaktPRG.Model;
@@ -22,8 +24,9 @@ namespace RPGfaktPRG.Pages
         public int clickPercentage = 70;
         public GameState State { get; set; }
         public List<Connection> Targets { get; set; }
-        public  Random RandomGen = new Random();
-        public Room Fence { get; set; }
+        public Random RandomGen = new Random();
+        public string wdawd = "dwad";
+        public int randomValueBetween0And99;
         public void OnGet(Room id)
         {
             _gs.FetchData();
@@ -35,6 +38,8 @@ namespace RPGfaktPRG.Pages
             Targets = _gs.Targets;
             _gs.Action(id);
             State = _gs.State;
+            randomValueBetween0And99 = RandomGen.Next(100);
         }
+        
     }
 }
