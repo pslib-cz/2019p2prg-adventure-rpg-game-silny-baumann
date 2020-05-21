@@ -9,25 +9,30 @@
 <div class="m-1">
     @foreach (var target in Model.Targets)
     {
+        if (Model.State.Health <= 0)
+        {
+            target.To = RPGfaktPRG.Model.Room.GameOver;
+        }
         <a class="btn btn-secondary" asp-page="Place" asp-route-id="@target.To">@target.Description</a>
-    }
-    @{ var idk2 = Model.Location.ID;}
-
-    @for (int i = 0; i < 100; i++)
-    {
-        int randomValueBetween0And99 = Model.RandomGen.Next(100);
-        if (randomValueBetween0And99 < @Model.clickPercentage)
+        if (Model.Location.Title == "Fence")
         {
+            <a class="btn btn-secondary" asp-page="Place" onclick="" asp-route-id="@target.To">@target.Description</a>
+            for (int i = 0; i < 100; i++)
+            {
+                int randomValueBetween0And99 = Model.RandomGen.Next(100);
+                if (randomValueBetween0And99 < Model.clickPercentage)
+                {
+                    target.To = RPGfaktPRG.Model.Room.BehindFenceSuccess;
+                }
 
-
+                else
+                {
+                    target.To = RPGfaktPRG.Model.Room.BehindFenceFailure;
+                }
+            }
         }
-        else
-        {
 
-        }
     }
-    @if (idk2 == 1)
-    {
-    @Model.idk
-    }
+
+    <a style="color:red">HP: @Model.State.Health</a>
 </div>

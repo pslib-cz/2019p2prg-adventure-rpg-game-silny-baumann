@@ -102,7 +102,8 @@ namespace RPGfaktPRG.Services
             {
                 ID = 13,
                 Title = "Game Over",
-                Description = "O uprchlých vězních z Alcatrazu se neví nic. Ani to, jestli jejich útěk byl úspěšný, nebo ne. U tebe je to však nadmíru jasné. "
+                Description = "O uprchlých vězních z Alcatrazu se neví nic. Ani to, jestli jejich útěk byl úspěšný, nebo ne. U tebe je to však nadmíru jasné. ",
+                Health = -10
             }); // Game Over
 
 
@@ -125,6 +126,7 @@ namespace RPGfaktPRG.Services
             _map.Add(new Connection(Room.ToiletsBox, Room.ToiletsBoxBlow, "Vyhodit pojistky"));
             _map.Add(new Connection(Room.ToiletsBox, Room.Hall, "Jít zpět do haly"));
             _map.Add(new Connection(Room.ToiletsBoxBlow, Room.Prison, "Hrát znovu"));
+            _map.Add(new Connection(Room.Hall, Room.GameOver, "awdawd"));
 
         }
 
