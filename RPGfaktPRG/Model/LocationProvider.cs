@@ -29,7 +29,7 @@ namespace RPGfaktPRG.Services
             {
                 ID = 1,
                 Title = "Prison",
-                Description = "Probouzíš se v jakémsi vězení a nic si nepamatuješ. Po chvilce slyšíš rozhovor mezi dvěma strážemi z něhož vyplývá, že jsi byl unešen hitmany, kteří se tě chystají kvůli tvým neuvěřitelným programátorským schopnostem prodat do otroctví. Musíš se za každou cenu dostat ven."
+                Description = "Probouzíš se v jakémsi vězení a nic si nepamatuješ. Po chvilce slyšíš rozhovor mezi dvěma strážemi z něhož vyplývá, že jsi byl unešen hitmany, kteří se tě chystají kvůli tvým neuvěřitelným programátorským schopnostem prodat do otroctví. Musíš se za každou cenu dostat ven. Ze stolu čouhá drát, který by mohl posloužit jako šperhák."
             });
             _locations.Add(Room.Fence, new Location
             {
@@ -97,12 +97,6 @@ namespace RPGfaktPRG.Services
                 Title = "Yard",
                 Description = "Dostal jsi se na nádvoří. Vidíš, že okolo celého areálu je ostnatý plot."
             });
-            _locations.Add(Room.GameOver, new Location
-            {
-                ID = 13,
-                Title = "Game Over",
-                Description = "O uprchlých vězních z Alcatrazu se neví nic. Ani to, jestli jejich útěk byl úspěšný, nebo ne. U tebe je to však nadmíru jasné.",
-            }); // Game Over
             _locations.Add(Room.DiningRoom, new Location
             {
                 ID = 14,
@@ -155,7 +149,7 @@ namespace RPGfaktPRG.Services
 
 
             _map.Add(new Connection(1, Room.Start, Room.Prison, "Začít"));
-            _map.Add(new Connection(2, Room.Prison, Room.Hall, "Jít do haly"));
+            _map.Add(new Connection(2, Room.Prison, Room.Hall, "Pokusit se vypáčit zámek"));
             _map.Add(new Connection(3, Room.Prison, Room.Yard, "Utéct oknem na nádvoří"));
             _map.Add(new Connection(4, Room.Yard, Room.Prison, "Vrátit se do cely"));
             _map.Add(new Connection(5, Room.Yard, Room.Fence, "Jít k plotu"));
@@ -186,6 +180,8 @@ namespace RPGfaktPRG.Services
             _map.Add(new Connection(30, Room.CarSteal, Room.Prison, "Hrát znovu"));
             _map.Add(new Connection(31, Room.Fence, Room.BehindFenceSuccess, "Jít k plotu"));
             _map.Add(new Connection(32, Room.Fence, Room.BehindFenceFailure, "Jít k plotu"));
+            _map.Add(new Connection(33, Room.Fence, Room.Yard, "Vrátit se na nádvoří"));
+            _map.Add(new Connection(34, Room.BehindFenceFailure, Room.Prison, "Hrát znovu"));
         }
 
 
