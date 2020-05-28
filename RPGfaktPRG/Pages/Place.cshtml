@@ -9,11 +9,7 @@
 <div class="m-1">
     @foreach (var target in Model.Targets)
     {
-        if (Model.State.Health <= 0)
-        {
-            target.To = RPGfaktPRG.Model.Room.GameOver;
-        }
-        else if (target.Id == 31)
+        if (target.Id == 31)
         {
 
         }
@@ -31,10 +27,6 @@
     }
     @if (Model.Location.ID == 2)
     {
-        for (int i = 0; i < 100; i++)
-        {
-            if (i == 1)
-            {
                 if (Model.randomValueBetween0And99 <= @Model.clickPercentage)
                 {
                     <a class="btn btn-secondary" asp-page="Place" asp-route-id="@RPGfaktPRG.Model.Room.BehindFenceSuccess"> Pokusit se dostat přes plot</a>
@@ -43,11 +35,9 @@
                 {
                     <a class="btn btn-secondary" asp-page="Place" asp-route-id="@RPGfaktPRG.Model.Room.BehindFenceFailure">Pokusit se dostat přes plot </a>
                 }
-            }
-
-        }
 
     }
+    
 
 
     <a style="color:red">HP: @Model.State.Health</a>

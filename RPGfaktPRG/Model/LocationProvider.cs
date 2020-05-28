@@ -40,20 +40,21 @@ namespace RPGfaktPRG.Services
             _locations.Add(Room.BehindFenceSuccess, new Location
             {
                 ID = 3,
-                Title = "BehindFenceSuccess",
-                Description = "Úspěšně jsi přelezl plot, ale těžce jsi se zranil. Jsi sotva schopen udržet se na nohou. Ocitáš se před dlouhou silnicí. V dálce přes silnici vidíš uprostřed pustiny stát auto."
+                Title = "Podařilo se přelézt",
+                Description = "Úspěšně jsi přelezl plot, ale těžce jsi se zranil. Jsi sotva schopen udržet se na nohou. Ocitáš se před dlouhou silnicí. V dálce přes silnici vidíš uprostřed pustiny stát auto. Udržel jsi malé škrábnutí.."
             });
             _locations.Add(Room.BehindFenceFailure, new Location
             {
                 ID = 4,
-                Title = "BehindFenceFailure",
-                Description = "Při přelézání plotu jsi se několikrát bodl o drát. Rychle začínáš ztrácet krev a padáš do bezvědomí..."
+                Title = "Nepovedlo se",
+                Description = "Při přelézání plotu jsi se několikrát bodl o drát. Rychle začínáš ztrácet krev a padáš do bezvědomí... přišel jsi o svá HP"
+
             });
             _locations.Add(Room.Hall, new Location
             {
                 ID = 5,
                 Title = "Hall",
-                Description = "Vstupuješ do haly, která je k tvému překvapení naprosto vylidněná. Stráže musí být někde poblíž."
+                Description = "Vstupuješ do haly, která je k tvému překvapení naprosto vylidněná. Stráže musí být někde poblíž. Máš na výběr vrátit se zpátky, jít do první místnosti na záchody nebo dostat se do jídelny a nebo do místnosti s kamerami."
             });
             _locations.Add(Room.Toilets, new Location
             {
@@ -137,8 +138,7 @@ namespace RPGfaktPRG.Services
             {
                 ID = 20,
                 Title = "DoNothingCar",
-                Description = "Rozhodneš se nic neudělat. Po chvilce se oba strážní vracejí a odváží tě do věznice. Vážně jsi TAKHLE propásl svojí šanci?",
-                Health = -10
+                Description = "Rozhodneš se nic neudělat. Po chvilce se oba strážní vracejí a odváží tě do věznice. Vážně jsi TAKHLE propásl svojí šanci?"
             });
             _locations.Add(Room.CarSteal, new Location
             {
@@ -166,7 +166,6 @@ namespace RPGfaktPRG.Services
             _map.Add(new Connection(16, Room.ToiletsBox, Room.ToiletsBoxBlow, "Vyhodit pojistky"));
             _map.Add(new Connection(17, Room.ToiletsBox, Room.Hall, "Jít zpět do haly"));
             _map.Add(new Connection(18, Room.ToiletsBoxBlow, Room.Prison, "Hrát znovu"));
-            _map.Add(new Connection(19, Room.Hall, Room.GameOver, "awdawd"));
             _map.Add(new Connection(20, Room.BehindFenceSuccess, Room.Car, "Jít k autu"));
             _map.Add(new Connection(21, Room.BehindFenceSuccess, Room.Road, "Jít po silnici"));
             _map.Add(new Connection(22, Room.Car, Room.BehindFenceSuccess, "Vrátit se k plotu"));
@@ -182,6 +181,7 @@ namespace RPGfaktPRG.Services
             _map.Add(new Connection(32, Room.Fence, Room.BehindFenceFailure, "Jít k plotu"));
             _map.Add(new Connection(33, Room.Fence, Room.Yard, "Vrátit se na nádvoří"));
             _map.Add(new Connection(34, Room.BehindFenceFailure, Room.Prison, "Hrát znovu"));
+            _map.Add(new Connection(35, Room.Hall, Room.DiningRoom, "Jít do jídelny"));
         }
 
 

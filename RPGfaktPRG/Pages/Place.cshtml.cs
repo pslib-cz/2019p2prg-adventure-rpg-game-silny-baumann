@@ -21,7 +21,7 @@ namespace RPGfaktPRG.Pages
         }
 
         public Location Location { get; set; }
-        public int clickPercentage = 70;
+        public int clickPercentage = 30;
         public GameState State { get; set; }
         public List<Connection> Targets { get; set; }
         public Random RandomGen = new Random();
